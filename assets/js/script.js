@@ -26,6 +26,7 @@ const overlay = document.querySelector("[data-overlay]");
 const modalImg = document.querySelector("[data-modal-img]");
 const modalTitle = document.querySelector("[data-modal-title]");
 const modalText = document.querySelector("[data-modal-text]");
+const modalDate = document.querySelector("[data-modal-date]");
 
 // modal toggle function
 const testimonialsModalFunc = function () {
@@ -42,6 +43,13 @@ for (let i = 0; i < testimonialsItem.length; i++) {
     modalImg.alt = this.querySelector("[data-testimonials-avatar]").alt;
     modalTitle.innerHTML = this.querySelector("[data-testimonials-title]").innerHTML;
     modalText.innerHTML = this.querySelector("[data-testimonials-text]").innerHTML;
+
+    // Update modal date if it exists
+    const testimonialsDate = this.querySelector("time");
+    if (modalDate && testimonialsDate) {
+      modalDate.innerHTML = testimonialsDate.innerHTML;
+      modalDate.setAttribute('datetime', testimonialsDate.getAttribute('datetime'));
+    }
 
     testimonialsModalFunc();
 
